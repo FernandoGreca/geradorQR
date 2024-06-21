@@ -79,8 +79,9 @@
             <p>Link para conversao</p>
             <input type="text" name="name" id="name" placeholder="Insira seu link">
             {{erro}}
-            <input type="submit" value="Gerar QRcode">
-            <a href="{{senha}}" download="QRcode.png">Baixe o QR</a>
+            <a href="{{senha}}" download="QRcode.png">
+                <input type="submit" value="Gerar QRcode">
+            </a>
         </form>
     </main> 
 </body>
