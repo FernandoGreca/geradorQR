@@ -26,7 +26,7 @@ def gerar(link):
     buffer.seek(0)
     
     # Enviar o arquivo temporário
-    return send_file(buffer, mimetype='image/png', download_name='qrcode.png')
+    return send_file(buffer, mimetype='image/png', as_attachment=True, download_name='qrcode.png')
 
 
 
