@@ -1,6 +1,6 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, send_file
 import pyqrcode
-from pyqrcode import QRCode
+import io
 
 app = Flask(__name__)
 
@@ -19,13 +19,15 @@ def submit():
     
 def gerar(link):
     
-    qr_url = link
-
-    qr_code = pyqrcode.create(qr_url)
-
-    gerado = qr_code.png(file='qr_code.png', scale=8)
+    qr_code = pyqrcode.create(link)
     
-    return render_template("index.html", senha=gerado)
+    buffer = io.BytesIO()
+    qr_code.png(buffer, scale=10)
+    buffer.seek(0)
+    
+    # Enviar o arquivo temporário
+    return send_file(buffer, mimetype='image/png', download_name='qrcode.png')
+
 
 
 if __name__ == '__main__':
