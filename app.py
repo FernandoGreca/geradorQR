@@ -10,24 +10,17 @@ def index():
 
 @app.route('/submit', methods=['POST'])
 def submit():
-    try:
-        link = (request.form['name'])
-        return gerar(link)
-    except ValueError:
-        erro = "INFORME UM VALOR VALIDO!!"
-        return render_template("index.html", erro=erro)
-    
+    link = (request.form['name'])
+    return gerar(link)
+ 
 def gerar(link):
-    
     qr_code = pyqrcode.create(link)
     
     buffer = io.BytesIO()
     qr_code.png(buffer, scale=10)
     buffer.seek(0)
     
-    # Enviar o arquivo temporário
     return send_file(buffer, mimetype='image/png', as_attachment=True, download_name='qrcode.png')
-
 
 
 if __name__ == '__main__':

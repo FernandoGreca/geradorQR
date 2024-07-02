@@ -21,6 +21,10 @@
             text-align: center;
         }
 
+        p {
+            text-align: left;
+        }
+
         form {
             background-color: #fff;
             padding: 20px;
@@ -45,6 +49,7 @@
 
         form input[type="submit"] {
             background-color: #007BFF;
+            width: 100%;
             color: #fff;
             border: none;
             padding: 10px 20px;
@@ -74,11 +79,11 @@
 </head>
 <body>
     <main>
-        <h1>Gerador QRcode</h1>
+        <h1>Gerador de QRcode</h1>
         <form action="/submit" method="POST">
-            <p>Link para conversao</p>
-            <input type="text" name="name" id="name" placeholder="Insira seu link">
-            {{erro}}
+            <p>Coloque abaixo o que deja transformar em QRCode.</p> 
+            <p>Ex: links, palavras, números, etc.</p>
+            <input type="text" name="name" id="name" placeholder="Insira seu texto aqui">
             <input type="submit" value="Gerar QRcode">
         </form>
     </main> 
